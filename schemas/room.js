@@ -9,7 +9,7 @@ const roomSchema = new Schema({
     max: {
         type: Number,
         required: true,
-        default: 10,
+        default: 2,
         min: 2,
     },
     owner: {

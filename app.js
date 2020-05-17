@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 const ColorHash = require('color-hash');
+const cors = require('cors');
 require('dotenv').config();
 
 const webSocket = require('./socket');
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(sessionMiddleware);
 app.use(flash());
+app.use(cors());
 
 app.use((req, res, next) => {//req.sessionID를 바탕으로 color속성을 생성. req.session.color를 사용자 아이디처럼 사용
   if (!req.session.color) {
